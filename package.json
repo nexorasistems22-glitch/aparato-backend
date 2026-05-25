@@ -7,7 +7,7 @@
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "db:migrate": "prisma migrate deploy",
+    "db:migrate": "node node_modules/prisma/build/index.js migrate deploy",
     "db:generate": "prisma generate",
     "db:seed": "ts-node src/seed.ts",
     "db:studio": "prisma studio"
