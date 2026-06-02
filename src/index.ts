@@ -23,9 +23,13 @@ import { startCronJobs } from './jobs/cronJobs';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(helmet());
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: [
+    'http://localhost:3000',
+    'https://aparato-frontend.vercel.app',
+    'https://aparato-app-frontend.vercel.app',
+    process.env.FRONTEND_URL || '',
+  ],
   credentials: true,
 }));
 
