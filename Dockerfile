@@ -6,5 +6,6 @@ RUN npm install
 COPY prisma ./prisma
 RUN node node_modules/prisma/build/index.js generate
 COPY . .
+RUN npm run build
 EXPOSE 3001
-CMD ["node", "-e", "const {execSync}=require('child_process');try{execSync('node node_modules/prisma/build/index.js migrate deploy',{stdio:'inherit'})}catch(e){console.error(e)}; require('node_modules/ts-node/dist/bin').main(['--transpile-only','src/index.ts'])"]
+CMD ["sh", "-c", "node node_modules/prisma/build/index.js migrate deploy && node dist/index.js"]
