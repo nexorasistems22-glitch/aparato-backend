@@ -6,6 +6,6 @@ RUN npm install
 COPY prisma ./prisma
 RUN node node_modules/prisma/build/index.js generate
 COPY . .
-RUN npm run build
+RUN node node_modules/typescript/bin/tsc
 EXPOSE 3001
 CMD ["sh", "-c", "node node_modules/prisma/build/index.js migrate deploy && node dist/index.js"]
