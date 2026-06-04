@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 COPY package*.json ./
 RUN npm install
 COPY prisma ./prisma
-RUN node node_modules/prisma/build/index.js generate
+RUN node node_modules/typescript/bin/tsc --skipLibCheck
 COPY . .
 RUN node node_modules/typescript/bin/tsc
 EXPOSE 3001
