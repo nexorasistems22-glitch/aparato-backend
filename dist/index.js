@@ -51,5 +51,13 @@ app.listen(PORT, () => {
     console.log(`📅 ${new Date().toLocaleString('pt-BR')}\n`);
     (0, cronJobs_1.startCronJobs)();
 });
+process.on('uncaughtException', (err) => {
+    console.error('UNCAUGHT EXCEPTION:', err);
+    process.exit(1);
+});
+process.on('unhandledRejection', (reason) => {
+    console.error('UNHANDLED REJECTION:', reason);
+    process.exit(1);
+});
 exports.default = app;
 //# sourceMappingURL=index.js.map
