@@ -6,5 +6,6 @@ RUN npm install
 COPY prisma ./prisma
 RUN node node_modules/prisma/build/index.js generate
 COPY . .
+RUN node node_modules/prisma/build/index.js generate
 EXPOSE 3001
-CMD ["node", "dist/index.js"]
+CMD ["sh", "-c", "node node_modules/prisma/build/index.js migrate deploy && node dist/index.js"]
