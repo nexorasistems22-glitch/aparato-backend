@@ -8,4 +8,4 @@ RUN node node_modules/prisma/build/index.js generate
 COPY . .
 RUN node node_modules/prisma/build/index.js generate
 EXPOSE 3001
-CMD ["sh", "-c", "node node_modules/prisma/build/index.js migrate deploy && node dist/index.js"]
+CMD ["node", "dist/test-server.js"]
